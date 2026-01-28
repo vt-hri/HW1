@@ -34,12 +34,10 @@ See `teleop.py` to understand which keys map to which axis of robot motion.
 
 ## Assignment
 
-Here are the main steps:
-1. implement a limiter to prevent us from teleoperating robot into the table [even better, keep us in a safe bounding box]
-2. implement a script to record the states we mark [use the "toggle" button, need to add some logic prevent duplicates. I think these should be recorded as json, but am open to whatever is easiest]
-3. create a script to replay that trajectory [picking one block and placing it on the other]
-		[will need to recognize difference between position commands, gripper commands...]
-		[maybe rename "main.py" as "record", and then make a "replay".]
-4. change the location of one of the blocks; enable the user to take over to fix things
-		[during replay, student should think about how they want to "pause" the recorded thing, modify, and resume...
-		may need to "skip" the next part of their motion, since modified!]
+Modify the provided code to complete the following steps:
+1. Implement a limiter to prevent users from teleoperating the robot into the table or out of the robot's workspace.
+2. Implement a script so that users can "record" a state by pressing the toggle button. The recorded states should be saved to a JSON file (or similar output).
+3. Provide and record a demonstration lifting one block and placing it on the other.
+4. Create a new script (called `replay.py`) that will replay the recorded trajectory. This file should load the JSON file and control the robot to move to each of the recorded states.
+5. In `replay.py`, change the location of one of the blocks. Purely replaying the recorded trajectory should now fail (since the block location has changed). Enable the user to intervene and modify the robot's motion.
+6. Your final version of `replay.py` should control the robot to follow the keypoints saved in the JSON file. The user should be able to press a button and teleoperate the robot. When the user is done, the robot should resume its original trajectory (while skipping the modified parts).
